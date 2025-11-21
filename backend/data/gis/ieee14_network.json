@@ -1,0 +1,416 @@
+{
+  "buses": [
+    {
+      "id": "bus_0",
+      "name": 1,
+      "voltage_kv": 135.0,
+      "type": "b",
+      "vm_pu": 1.06,
+      "location": {
+        "lat": 23.13,
+        "lon": 113.26
+      },
+      "name_zh": "220kV天河主变",
+      "capacity_mva": 126,
+      "type_zh": "高压变电站"
+    },
+    {
+      "id": "bus_1",
+      "name": 2,
+      "voltage_kv": 135.0,
+      "type": "b",
+      "vm_pu": 1.0450000000000002,
+      "location": {
+        "lat": 23.11,
+        "lon": 113.3
+      },
+      "name_zh": "220kV黄埔主变",
+      "capacity_mva": 126,
+      "type_zh": "高压变电站"
+    },
+    {
+      "id": "bus_2",
+      "name": 3,
+      "voltage_kv": 135.0,
+      "type": "b",
+      "vm_pu": 1.01,
+      "location": {
+        "lat": 23.12,
+        "lon": 113.24
+      },
+      "name_zh": "220kV越秀主变",
+      "capacity_mva": 126,
+      "type_zh": "高压变电站"
+    },
+    {
+      "id": "bus_3",
+      "name": 4,
+      "voltage_kv": 135.0,
+      "type": "b",
+      "vm_pu": 1.0176708536979617,
+      "location": {
+        "lat": 23.09,
+        "lon": 113.28
+      },
+      "name_zh": "110kV海珠变",
+      "capacity_mva": 126,
+      "type_zh": "高压变电站"
+    },
+    {
+      "id": "bus_4",
+      "name": 5,
+      "voltage_kv": 135.0,
+      "type": "b",
+      "vm_pu": 1.0195138598245423,
+      "location": {
+        "lat": 23.15,
+        "lon": 113.22
+      },
+      "name_zh": "110kV白云变",
+      "capacity_mva": 126,
+      "type_zh": "高压变电站"
+    },
+    {
+      "id": "bus_5",
+      "name": 6,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.07,
+      "location": {
+        "lat": 23.03,
+        "lon": 113.34
+      },
+      "name_zh": "110kV番禺变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_6",
+      "name": 7,
+      "voltage_kv": 14.0,
+      "type": "b",
+      "vm_pu": 1.0615195324941464,
+      "location": {
+        "lat": 23.18,
+        "lon": 113.28
+      },
+      "name_zh": "110kV花都变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_7",
+      "name": 8,
+      "voltage_kv": 12.0,
+      "type": "b",
+      "vm_pu": 1.09,
+      "location": {
+        "lat": 23.08,
+        "lon": 113.32
+      },
+      "name_zh": "110kV增城变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_8",
+      "name": 9,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.0559317206401924,
+      "location": {
+        "lat": 23.05,
+        "lon": 113.2
+      },
+      "name_zh": "110kV南沙变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_9",
+      "name": 10,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.0509846250025665,
+      "location": {
+        "lat": 23.16,
+        "lon": 113.35
+      },
+      "name_zh": "110kV从化变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_10",
+      "name": 11,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.056906518541777,
+      "location": {
+        "lat": 23.12,
+        "lon": 113.29
+      },
+      "name_zh": "35kV萝岗变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_11",
+      "name": 12,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.0551885631974163,
+      "location": {
+        "lat": 23.1,
+        "lon": 113.25
+      },
+      "name_zh": "35kV荔湾变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_12",
+      "name": 13,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.050381713629216,
+      "location": {
+        "lat": 23.14,
+        "lon": 113.31
+      },
+      "name_zh": "35kV新塘变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    },
+    {
+      "id": "bus_13",
+      "name": 14,
+      "voltage_kv": 0.208,
+      "type": "b",
+      "vm_pu": 1.0355299458561888,
+      "location": {
+        "lat": 23.11,
+        "lon": 113.22
+      },
+      "name_zh": "35kV白云新城变",
+      "capacity_mva": 50,
+      "type_zh": "中压变电站"
+    }
+  ],
+  "lines": [
+    {
+      "id": "line_0",
+      "name": null,
+      "from_bus": 0,
+      "to_bus": 1,
+      "length_km": 1.0,
+      "loading_percent": 1.5075683619090745
+    },
+    {
+      "id": "line_1",
+      "name": null,
+      "from_bus": 0,
+      "to_bus": 4,
+      "length_km": 1.0,
+      "loading_percent": 0.7210969063235548
+    },
+    {
+      "id": "line_2",
+      "name": null,
+      "from_bus": 1,
+      "to_bus": 2,
+      "length_km": 1.0,
+      "loading_percent": 0.7093950191117901
+    },
+    {
+      "id": "line_3",
+      "name": null,
+      "from_bus": 1,
+      "to_bus": 3,
+      "length_km": 1.0,
+      "loading_percent": 0.5427761072353297
+    },
+    {
+      "id": "line_4",
+      "name": null,
+      "from_bus": 1,
+      "to_bus": 4,
+      "length_km": 1.0,
+      "loading_percent": 0.40291206703543786
+    },
+    {
+      "id": "line_5",
+      "name": null,
+      "from_bus": 2,
+      "to_bus": 3,
+      "length_km": 1.0,
+      "loading_percent": 0.23968630335356786
+    },
+    {
+      "id": "line_6",
+      "name": null,
+      "from_bus": 3,
+      "to_bus": 4,
+      "length_km": 1.0,
+      "loading_percent": 0.6270222084738174
+    },
+    {
+      "id": "line_7",
+      "name": null,
+      "from_bus": 5,
+      "to_bus": 10,
+      "length_km": 1.0,
+      "loading_percent": 0.07712568214608029
+    },
+    {
+      "id": "line_8",
+      "name": null,
+      "from_bus": 5,
+      "to_bus": 11,
+      "length_km": 1.0,
+      "loading_percent": 0.07720783487812465
+    },
+    {
+      "id": "line_9",
+      "name": null,
+      "from_bus": 5,
+      "to_bus": 12,
+      "length_km": 1.0,
+      "loading_percent": 0.18086530390573854
+    },
+    {
+      "id": "line_10",
+      "name": null,
+      "from_bus": 8,
+      "to_bus": 9,
+      "length_km": 1.0,
+      "loading_percent": 0.06426197584469617
+    },
+    {
+      "id": "line_11",
+      "name": null,
+      "from_bus": 8,
+      "to_bus": 13,
+      "length_km": 1.0,
+      "loading_percent": 0.09655887605038127
+    },
+    {
+      "id": "line_12",
+      "name": null,
+      "from_bus": 9,
+      "to_bus": 10,
+      "length_km": 1.0,
+      "loading_percent": 0.03955377043831352
+    },
+    {
+      "id": "line_13",
+      "name": null,
+      "from_bus": 11,
+      "to_bus": 12,
+      "length_km": 1.0,
+      "loading_percent": 0.017055227725919116
+    },
+    {
+      "id": "line_14",
+      "name": null,
+      "from_bus": 12,
+      "to_bus": 13,
+      "length_km": 1.0,
+      "loading_percent": 0.05681534430825929
+    }
+  ],
+  "loads": [
+    {
+      "id": "load_0",
+      "bus": 1,
+      "p_mw": 21.7,
+      "q_mvar": 12.7
+    },
+    {
+      "id": "load_1",
+      "bus": 2,
+      "p_mw": 94.2,
+      "q_mvar": 19.0
+    },
+    {
+      "id": "load_2",
+      "bus": 3,
+      "p_mw": 47.8,
+      "q_mvar": -3.9
+    },
+    {
+      "id": "load_3",
+      "bus": 4,
+      "p_mw": 7.6,
+      "q_mvar": 1.6
+    },
+    {
+      "id": "load_4",
+      "bus": 5,
+      "p_mw": 11.2,
+      "q_mvar": 7.5
+    },
+    {
+      "id": "load_5",
+      "bus": 8,
+      "p_mw": 29.5,
+      "q_mvar": 16.6
+    },
+    {
+      "id": "load_6",
+      "bus": 9,
+      "p_mw": 9.0,
+      "q_mvar": 5.8
+    },
+    {
+      "id": "load_7",
+      "bus": 10,
+      "p_mw": 3.5,
+      "q_mvar": 1.8
+    },
+    {
+      "id": "load_8",
+      "bus": 11,
+      "p_mw": 6.1,
+      "q_mvar": 1.6
+    },
+    {
+      "id": "load_9",
+      "bus": 12,
+      "p_mw": 13.5,
+      "q_mvar": 5.8
+    },
+    {
+      "id": "load_10",
+      "bus": 13,
+      "p_mw": 14.9,
+      "q_mvar": 5.0
+    }
+  ],
+  "generators": [
+    {
+      "id": "gen_0",
+      "bus": 1,
+      "p_mw": 40.0,
+      "vm_pu": 1.045
+    },
+    {
+      "id": "gen_1",
+      "bus": 2,
+      "p_mw": 0.0,
+      "vm_pu": 1.01
+    },
+    {
+      "id": "gen_2",
+      "bus": 5,
+      "p_mw": 0.0,
+      "vm_pu": 1.07
+    },
+    {
+      "id": "gen_3",
+      "bus": 7,
+      "p_mw": 0.0,
+      "vm_pu": 1.09
+    }
+  ]
+}

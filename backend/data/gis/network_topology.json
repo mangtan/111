@@ -1,0 +1,148 @@
+{
+  "substations": [
+    {
+      "id": "sub_1",
+      "name": "220kV东城变",
+      "voltage_level": 220,
+      "capacity_mva": 360,
+      "location": {
+        "lat": 31.23,
+        "lon": 121.48
+      },
+      "type": "transmission",
+      "status": "operating"
+    },
+    {
+      "id": "sub_2",
+      "name": "220kV西城变",
+      "voltage_level": 220,
+      "capacity_mva": 360,
+      "location": {
+        "lat": 31.22,
+        "lon": 121.45
+      },
+      "type": "transmission",
+      "status": "operating"
+    },
+    {
+      "id": "sub_3",
+      "name": "110kV南区变",
+      "voltage_level": 110,
+      "capacity_mva": 100,
+      "location": {
+        "lat": 31.2,
+        "lon": 121.47
+      },
+      "type": "distribution",
+      "status": "operating"
+    },
+    {
+      "id": "sub_4",
+      "name": "110kV北区变",
+      "voltage_level": 110,
+      "capacity_mva": 126,
+      "location": {
+        "lat": 31.25,
+        "lon": 121.46
+      },
+      "type": "distribution",
+      "status": "operating"
+    },
+    {
+      "id": "sub_5",
+      "name": "110kV开发区变",
+      "voltage_level": 110,
+      "capacity_mva": 63,
+      "location": {
+        "lat": 31.21,
+        "lon": 121.5
+      },
+      "type": "distribution",
+      "status": "operating"
+    }
+  ],
+  "lines": [
+    {
+      "id": "line_1",
+      "name": "东西220kV线路",
+      "from_bus": "sub_1",
+      "to_bus": "sub_2",
+      "voltage_level": 220,
+      "capacity_mva": 300,
+      "length_km": 15.5,
+      "status": "operating"
+    },
+    {
+      "id": "line_2",
+      "name": "东-南110kV线路",
+      "from_bus": "sub_1",
+      "to_bus": "sub_3",
+      "voltage_level": 110,
+      "capacity_mva": 100,
+      "length_km": 8.2,
+      "status": "operating"
+    },
+    {
+      "id": "line_3",
+      "name": "西-北110kV线路",
+      "from_bus": "sub_2",
+      "to_bus": "sub_4",
+      "voltage_level": 110,
+      "capacity_mva": 100,
+      "length_km": 7.8,
+      "status": "operating"
+    },
+    {
+      "id": "line_4",
+      "name": "东-开发区110kV线路",
+      "from_bus": "sub_1",
+      "to_bus": "sub_5",
+      "voltage_level": 110,
+      "capacity_mva": 63,
+      "length_km": 12.3,
+      "status": "operating"
+    },
+    {
+      "id": "line_5",
+      "name": "南-开发区110kV线路",
+      "from_bus": "sub_3",
+      "to_bus": "sub_5",
+      "voltage_level": 110,
+      "capacity_mva": 63,
+      "length_km": 6.5,
+      "status": "operating"
+    }
+  ],
+  "loads": [
+    {
+      "id": "load_1",
+      "bus": "sub_3",
+      "load_mw": 45,
+      "type": "industrial"
+    },
+    {
+      "id": "load_2",
+      "bus": "sub_3",
+      "load_mw": 25,
+      "type": "residential"
+    },
+    {
+      "id": "load_3",
+      "bus": "sub_4",
+      "load_mw": 60,
+      "type": "commercial"
+    },
+    {
+      "id": "load_4",
+      "bus": "sub_4",
+      "load_mw": 35,
+      "type": "residential"
+    },
+    {
+      "id": "load_5",
+      "bus": "sub_5",
+      "load_mw": 38,
+      "type": "industrial"
+    }
+  ]
+}

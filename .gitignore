@@ -1,0 +1,28 @@
+# macOS & general
+.DS_Store
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pytest_cache/
+.venv/
+venv/
+
+# Environment & secrets
+*.env
+backend/.env
+
+# Editor/IDE
+.idea/
+.vscode/
+
+# Build/Artifacts (front-end)
+node_modules/
+dist/
+
+# Pandapower caches (if any)
+*.pk
+

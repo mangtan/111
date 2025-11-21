@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能电网规划系统</title>
+    <!-- 简洁favicon：SVG字母G，避免emoji显示在标签页标题 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%231e40af'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='%23ffffff' font-family='Arial,Helvetica,sans-serif'%3EG%3C/text%3E%3C/svg%3E">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <header class="header">
+            <div class="header-content">
+                <div>
+                    <h1 data-i18n="header.title">智能电网规划系统</h1>
+                </div>
+                <div class="header-right">
+                    <div class="system-info">
+                        <button id="btnLanguage" class="btn-language">
+                            <i class="fas fa-globe"></i>
+                            <span id="langText">中文</span>
+                        </button>
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 左侧控制面板 -->
+            <aside class="left-panel">
+                <div class="panel-section">
+                    <h2 data-i18n="left.system_control">系统控制</h2>
+                    <button id="btnAnalyze" class="btn btn-primary" data-i18n="left.btn_analyze">运行完整分析</button>
+                    <button id="btnLoadData" class="btn btn-secondary" data-i18n="left.btn_load_data">加载数据</button>
+                    <button id="btnPowerFlow" class="btn btn-secondary" data-i18n="left.btn_powerflow">潮流计算</button>
+                    <button id="btnNMinus1" class="btn btn-secondary" data-i18n="left.btn_nminus1">N-1校验</button>
+                    <button id="btnToggleGrid" class="btn btn-secondary" data-i18n="left.btn_toggle_grid">切换网格叠加</button>
+                </div>
+
+                <div class="panel-section">
+                    <h2 data-i18n="left.load_summary">负载摘要</h2>
+                    <div id="loadSummary" class="info-box">
+                        <p data-i18n="left.load_summary_hint">点击"加载数据"获取负载信息...</p>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2 data-i18n="left.candidate_ranking">候选方案排名</h2>
+                    <div id="candidateRanking" class="candidate-list">
+                        <p style="color: #64748b; padding: 10px; text-align: center;" data-i18n="left.candidate_ranking_hint">等待分析结果...</p>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2 data-i18n="llm.doc_analysis">LLM 文档分析</h2>
+                    <div class="info-box">
+                        <p style="margin-bottom:6px;" data-i18n="llm.doc_description">上传官方标准/手册（PDF/TXT），解析为结构化约束并一键应用。</p>
+                        <input type="file" id="llmFile" accept=".pdf,.txt" style="display:none;" />
+                        <button id="btnSelectFile" class="btn btn-small" style="width:100%; margin-bottom:6px;">
+                            <span data-i18n="llm.select_file">选择文件</span>
+                            <span id="selectedFileName" style="margin-left:8px; color:#94a3b8; font-size:11px;"></span>
+                        </button>
+                        <div style="display:flex; gap:6px; margin-bottom:6px;">
+                            <button id="btnUploadParse" class="btn btn-small" data-i18n="llm.btn_upload">上传并解析</button>
+                            <button id="btnApplyConstraints" class="btn btn-small" data-i18n="llm.btn_apply">应用至系统</button>
+                            <button id="btnResetConstraints" class="btn btn-small" data-i18n="llm.btn_reset">重置覆盖</button>
+                        </div>
+                        <div id="llmParseResult" style="font-size:12px; color:#cbd5e1; max-height:160px; overflow:auto; border:1px dashed #334155; padding:6px;">
+                            <p data-i18n="llm.no_document">尚未解析文档。</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 中间地图与图表区域 -->
+            <main class="center-panel">
+                <!-- 标签页导航 -->
+                <div class="center-tabs">
+                    <button class="center-tab active" data-tab="map">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span data-i18n="center.tab_map">电网拓扑地图</span>
+                    </button>
+                    <button class="center-tab" data-tab="chart">
+                        <i class="fas fa-chart-line"></i>
+                        <span data-i18n="center.tab_chart">负载预测曲线</span>
+                    </button>
+                </div>
+
+                <!-- 标签页内容 -->
+                <div class="center-tab-content">
+                    <div class="map-container tab-panel active" data-panel="map">
+                        <div id="map"></div>
+                    </div>
+
+                    <div class="chart-container tab-panel" data-panel="chart">
+                        <canvas id="loadChart"></canvas>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 右侧详细信息面板 -->
+            <aside class="right-panel">
+                <div class="panel-section">
+                    <h2 data-i18n="right.powerflow_validation">潮流与校验</h2>
+                    <div class="tabs">
+                        <div id="pfTabHeader" class="tab-header">
+                            <button class="tab-btn active" data-tab="powerflow">
+                                <i class="fas fa-bolt"></i> <span data-i18n="right.powerflow">潮流计算</span>
+                            </button>
+                            <button class="tab-btn" data-tab="nminus1">
+                                <i class="fas fa-exclamation-triangle"></i> <span data-i18n="right.nminus1">N-1校验</span>
+                            </button>
+                        </div>
+                        <div id="pfTabContent" class="tab-content">
+                            <div class="tab-pane active" id="pf-powerflow">
+                                <p style="color: #64748b; text-align: center;" data-i18n="right.powerflow_hint">点击"潮流计算"按钮获取结果</p>
+                            </div>
+                            <div class="tab-pane" id="pf-nminus1">
+                                <p style="color: #64748b; text-align: center;" data-i18n="right.nminus1_hint">点击"N-1校验"按钮获取结果</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2 data-i18n="right.constraint_check">约束检查</h2>
+                    <div id="constraintCheck" class="info-box">
+                        <p data-i18n="right.constraint_hint">等待分析...</p>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2 data-i18n="right.topology_analysis">拓扑分析</h2>
+                    <div id="topologyInfo" class="info-box">
+                        <p data-i18n="right.topology_hint">等待数据...</p>
+                    </div>
+                </div>
+
+                <!-- LLM聊天模块已移除 -->
+            </aside>
+        </div>
+
+        <!-- 底部状态栏 -->
+        <footer class="footer">
+            <div class="status-bar">
+                <span id="statusText" data-i18n="status.ready">系统就绪</span>
+                <span id="apiStatus" class="api-status" data-i18n="api.disconnected">API: 未连接</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading遮罩 -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p data-i18n="loading.message">数据处理中，请稍候...</p>
+        <button id="btnCancelLoading" class="btn-cancel" data-i18n="loading.cancel">取消</button>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js?v=4.0"></script>
+    <script>
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('currentTime').textContent = timeStr;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
